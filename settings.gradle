@@ -6,7 +6,7 @@ include(
         'services:menu-service',
         'services:orders-service',
         'services:reviews-service',
-    // 'services:menu-aggregate-service',
+        'services:menu-aggregate-service',
     // 'services:dispatcher-service',
     // 'infra-services:config-server',
     // 'infra-services:discovery-server',
