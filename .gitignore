@@ -22,3 +22,22 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+out/
+
+# Кэш и результаты сборки Gradle
+.gradle/
+build/
+
+# Исключаем JAR-файлы сборки, но оставляем Gradle Wrapper
+!gradle/wrapper/gradle-wrapper.jar
+
+# Сгенерированные файлы для Eclipse/Buildship
+.gradletasknamecache
+
+# Временные файлы
+hs_err_pid*
