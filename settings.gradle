@@ -3,8 +3,8 @@ rootProject.name = 'food-delivery-cloud'
 enableFeaturePreview('TYPESAFE_PROJECT_ACCESSORS')
 
 include(
-    'services:menu-service'
-    // 'services:orders-service',
+        'services:menu-service',
+        'services:orders-service',
     // 'services:reviews-service',
     // 'services:menu-aggregate-service',
     // 'services:dispatcher-service',
