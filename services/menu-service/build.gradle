@@ -24,4 +24,7 @@ dependencies {
     testImplementation libs.spring.boot.testcontainers
     testImplementation libs.testcontainers.postgresql
     testImplementation libs.testcontainers.junit.jupiter
+
+    implementation libs.spring.cloud.starter.config
+    implementation libs.spring.cloud.starter.netflix.eureka.client
 }

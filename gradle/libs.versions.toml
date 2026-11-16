@@ -50,6 +50,14 @@ wiremock-standalone = { module = "org.wiremock:wiremock-standalone", version.ref
 spring-boot-starter-aop = { module = "org.springframework.boot:spring-boot-starter-aop" }
 spring-cloud-starter-circuitbreaker-reactor-resilience4j = { module = "org.springframework.cloud:spring-cloud-starter-circuitbreaker-reactor-resilience4j" }
 
+# Spring Cloud Infrastructure
+spring-cloud-config-server = { module = "org.springframework.cloud:spring-cloud-config-server" }
+spring-cloud-starter-config = { module = "org.springframework.cloud:spring-cloud-starter-config" }
+spring-cloud-starter-netflix-eureka-server = { module = "org.springframework.cloud:spring-cloud-starter-netflix-eureka-server" }
+spring-cloud-starter-netflix-eureka-client = { module = "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client" }
+spring-cloud-starter-gateway = { module = "org.springframework.cloud:spring-cloud-starter-gateway" }
+spring-boot-starter-data-redis-reactive = { module = "org.springframework.boot:spring-boot-starter-data-redis-reactive" }
+
 [plugins]
 spring-boot = { id = "org.springframework.boot", version.ref = "springBoot" }
 spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.7" }

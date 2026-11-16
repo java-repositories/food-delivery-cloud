@@ -1,0 +1,43 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  cloud:
+    gateway:
+      default-filters:
+        - name: RequestRateLimiter
+          args:
+            redis-rate-limiter.replenishRate: 10
+            redis-rate-limiter.burstCapacity: 20
+            redis-rate-limiter.requestedTokens: 1
+            key-resolver: "#{@ipKeyResolver}"
+      routes:
+        - id: menu-service
+          uri: lb://menu-service
+          predicates:
+            - Path=/api/v1/dishes/**
+        - id: orders-service
+          uri: lb://orders-service
+          predicates:
+            - Path=/api/v1/orders/**
+        - id: reviews-service
+          uri: lb://reviews-service
+          predicates:
+            - Path=/api/v1/reviews/**
+        - id: menu-aggregate-service
+          uri: lb://menu-aggregate-service
+          predicates:
+            - Path=/api/v1/menu-aggregate/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true

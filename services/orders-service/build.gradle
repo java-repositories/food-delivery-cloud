@@ -26,4 +26,7 @@ dependencies {
     testImplementation libs.testcontainers.r2dbc
     testImplementation libs.testcontainers.junit.jupiter
     testImplementation libs.wiremock.standalone
+
+    implementation libs.spring.cloud.starter.config
+    implementation libs.spring.cloud.starter.netflix.eureka.client
 }

@@ -1,15 +1,8 @@
-server:
-  port: 8084
-
 spring:
   application:
     name: menu-aggregate-service
-
-clients:
-  menu-service:
-    url: http://localhost:8081
-  reviews-service:
-    url: http://localhost:8083
+  config:
+    import: optional:configserver:http://localhost:8888
 
 resilience4j:
   circuitbreaker:
@@ -27,12 +20,3 @@ resilience4j:
         waitDuration: 200ms
         ignoreExceptions:
           - ru.fooddelivery.aggregate.exception.DishNotFoundException
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,prometheus,circuitbreakers
-  health:
-    circuitbreakers:
-      enabled: true

@@ -8,7 +8,7 @@ include(
         'services:reviews-service',
         'services:menu-aggregate-service',
     // 'services:dispatcher-service',
-    // 'infra-services:config-server',
-    // 'infra-services:discovery-server',
-    // 'infra-services:api-gateway'
+        'infra-services:config-server',
+        'infra-services:discovery-server',
+        'infra-services:api-gateway'
 )

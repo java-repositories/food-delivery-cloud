@@ -32,6 +32,7 @@ class MenuAggregateControllerTest {
     static void configureProperties(DynamicPropertyRegistry registry) {
         registry.add("clients.menu-service.url", menuMock::baseUrl);
         registry.add("clients.reviews-service.url", reviewsMock::baseUrl);
+        registry.add("spring.cloud.loadbalancer.enabled", () -> "false");
     }
 
     @Autowired

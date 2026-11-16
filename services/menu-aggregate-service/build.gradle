@@ -16,4 +16,7 @@ dependencies {
     testImplementation libs.spring.boot.starter.test
     testImplementation libs.reactor.test
     testImplementation libs.wiremock.standalone
+
+    implementation libs.spring.cloud.starter.config
+    implementation libs.spring.cloud.starter.netflix.eureka.client
 }

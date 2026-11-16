@@ -1,0 +1,7 @@
+server:
+  port: 8084
+clients:
+  menu-service:
+    url: http://menu-service
+  reviews-service:
+    url: http://reviews-service
