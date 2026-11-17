@@ -1,0 +1,26 @@
+### 1. Добавляем блюдо в меню (menu-service)
+POST http://localhost:8080/api/v1/dishes
+Content-Type: application/json
+
+{
+  "name": "Пицца Пепперони",
+  "description": "Острая пепперони и моцарелла",
+  "price": 690.00,
+  "category": "PIZZA",
+  "available": true
+}
+
+### 2. Оформляем заказ (orders-service -> Outbox -> Kafka -> dispatcher-service)
+POST http://localhost:8080/api/v1/orders
+Content-Type: application/json
+
+{
+  "customerId": "user-1",
+  "deliveryAddress": "ул. Тверская, д. 12",
+  "items": [
+    { "dishId": 1, "quantity": 2 }
+  ]
+}
+
+### 3. Проверяем заказ через 3 секунды (статус должен стать COOKING)
+GET http://localhost:8080/api/v1/orders/1

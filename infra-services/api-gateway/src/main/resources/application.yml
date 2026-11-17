@@ -34,6 +34,10 @@ spring:
           uri: lb://menu-aggregate-service
           predicates:
             - Path=/api/v1/menu-aggregate/**
+        - id: dispatcher-service
+          uri: lb://dispatcher-service
+          predicates:
+            - Path=/api/v1/deliveries/**
 
 eureka:
   client:

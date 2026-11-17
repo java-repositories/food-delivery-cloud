@@ -2,3 +2,4 @@ CREATE DATABASE menu_db;
 CREATE DATABASE orders_db;
 CREATE DATABASE reviews_db;
 CREATE DATABASE keycloak_db;
+CREATE DATABASE dispatcher_db;
