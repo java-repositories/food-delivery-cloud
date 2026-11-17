@@ -41,4 +41,10 @@ subprojects {
     tasks.withType(Test).configureEach {
         useJUnitPlatform()
     }
+
+    dependencies {
+        implementation rootProject.libs.micrometer.registry.prometheus
+        implementation rootProject.libs.micrometer.tracing.bridge.brave
+        implementation rootProject.libs.zipkin.reporter.brave
+    }
 }
