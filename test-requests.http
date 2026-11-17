@@ -1,17 +1,47 @@
-### 1. Добавляем блюдо в меню (menu-service)
+### 1. Получаем токен обычного пользователя (user / user)
+POST http://localhost:8180/realms/food-delivery/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=food-delivery-client&username=user&password=user&grant_type=password
+
+> {% client.global.set("user_token", response.body.access_token); %}
+
+### 2. Получаем токен администратора (admin / admin)
+POST http://localhost:8180/realms/food-delivery/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=food-delivery-client&username=admin&password=admin&grant_type=password
+
+> {% client.global.set("admin_token", response.body.access_token); %}
+
+### 3. Пробуем добавить блюдо под обычным user (ожидаем 403 Forbidden)
 POST http://localhost:8080/api/v1/dishes
+Authorization: Bearer {{user_token}}
 Content-Type: application/json
 
 {
-  "name": "Пицца Пепперони",
-  "description": "Острая пепперони и моцарелла",
-  "price": 690.00,
-  "category": "PIZZA",
-  "available": true
+  "name": "Ролл Калифорния",
+  "price": 520.00,
+  "category": "SUSHI"
 }
 
-### 2. Оформляем заказ (orders-service -> Outbox -> Kafka -> dispatcher-service)
+### 4. Добавляем блюдо под admin (ожидаем 201 Created)
+POST http://localhost:8080/api/v1/dishes
+Authorization: Bearer {{admin_token}}
+Content-Type: application/json
+
+{
+  "name": "Ролл Калифорния",
+  "price": 520.00,
+  "category": "SUSHI"
+}
+
+### 5. Просмотр меню БЕЗ токена (публичный доступ, ожидаем 200 OK)
+GET http://localhost:8080/api/v1/menu-aggregate/dishes
+
+### 6. Оформляем заказ под обычным user (ожидаем 201 Created)
 POST http://localhost:8080/api/v1/orders
+Authorization: Bearer {{user_token}}
 Content-Type: application/json
 
 {
@@ -22,5 +52,6 @@ Content-Type: application/json
   ]
 }
 
-### 3. Проверяем заказ через 3 секунды (статус должен стать COOKING)
+### 7. Проверяем статус заказа под обычным user (ожидаем 200 OK и статус COOKING)
 GET http://localhost:8080/api/v1/orders/1
+Authorization: Bearer {{user_token}}
